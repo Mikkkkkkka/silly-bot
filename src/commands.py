@@ -30,10 +30,6 @@ async def handle_ping(message: Message) -> None:
 async def handle_scp(message: Message) -> None:
     user = message.from_user
 
-    if user.id == LEXA:
-        await message.reply('Заткнись заебал')
-        return
-
     await message.reply('СЦП СОСА-А-А-АТЬ')
     time.sleep(1)
     await message.reply('ВАМ ВСЕМ ПИЗДЕЦ')

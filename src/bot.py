@@ -27,7 +27,6 @@ async def set_main_menu(bot: Bot):
 @dp.message()
 async def handle_message(message: Message) -> None:
     if message.text is None: return
-    if message.from_user.id == LEXA: return
 
     message_words = message.text.lower().split()
 

@@ -18,11 +18,6 @@ ROSKOMNADZOR_REGEX = r'\W*р+о+с+к+о+м+н+а+д+з+о+р+\w*\W*'
 EXIT_REGEX = r'.*exit(.*).*'
 SYS_REGEX = r'.*sys.*'
 
-# Айдишки пользователей
-FATHER = 1868524158
-LEXA = 659819125
-THE_HATERS = 4001669564
-
 # Файлы
 FATHER_LIGOLAMBI = FSInputFile("father_ligolambi.gif")
 LIGOLAMBI = FSInputFile("ligolambi.gif")
