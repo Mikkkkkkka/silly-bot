@@ -40,7 +40,7 @@ def user_action_logger(func: Callable[[Message], tuple[Message, str]]):
 
         try:
             message, log_from_func = await func(*args)
-            log_message = f'[{timestamp()}] @{message.from_user.username}: {log_from_func}'
+            log_message = f'[ {timestamp()} ] @{message.from_user.username}: {log_from_func}'
 
             print(log_message)
             with open('./ebobot_log.txt', 'a') as f:
