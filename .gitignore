@@ -184,3 +184,4 @@ cython_debug/
 .idea/
 
 *.db
+**/*_log.txt

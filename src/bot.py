@@ -4,7 +4,7 @@ from aiogram import Bot
 from aiogram.types import Message, BotCommand
 from os import getenv
 
-from assist import *
+from utils import *
 from commands import *
 from replies import *
 
@@ -35,6 +35,9 @@ async def handle_message(message: Message) -> None:
 
     if reg_match(NET_REGEX)(message_words[-1]):
         await net_reply(message)
+
+    if any(reg_match(OCHEVIDNO_REGEX)(x) for x in message_words[-2::]):
+        await ochevidno_reply(message)
 
     if 'кт' in message_words:
         await kt_reply(message)

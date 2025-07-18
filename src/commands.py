@@ -6,7 +6,7 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message
 from aiogram.utils.formatting import Text, Strikethrough, Bold
 
-from assist import *
+from utils import *
 
 #
 # Команды

@@ -2,7 +2,7 @@ import time
 
 from aiogram.types import Message
 
-from assist import *
+from utils import *
 
 #
 # Ответы
@@ -51,3 +51,14 @@ async def roskomnadzor_reply(message: Message):
         s = s.replace('  ', ' ')
     await message.reply(rep)
     return message, 'роскомнадзорнулся'
+
+# Гоблин mentioned
+@user_action_logger
+async def ochevidno_reply(message: Message):
+    time.sleep(1)
+    await message.reply('Очевидно')
+    time.sleep(1)
+    await message.reply('Мало ли что очевидно')
+    time.sleep(0.75)
+    await message.reply('Вы все пидоры, вот что очевидно')
+    return message, 'доочевидился'

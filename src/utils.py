@@ -15,6 +15,7 @@ NET_REGEX = r'\W*н+е+т+\W*'
 PHYSICS_REGEX = r'\W*ф+и+з+и+к+\w*\W*'
 KAZAKHSTAN_REGEX = r'\W*к+а+з+а+х+с+т+а+н+\w*\W*'
 ROSKOMNADZOR_REGEX = r'\W*р+о+с+к+о+м+н+а+д+з+о+р+\w*\W*'
+OCHEVIDNO_REGEX = r'\W*о+ч+е+в+и+д+н+о\W*'
 EXIT_REGEX = r'.*exit(.*).*'
 SYS_REGEX = r'.*sys.*'
 
