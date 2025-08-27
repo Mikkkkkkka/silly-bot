@@ -39,9 +39,6 @@ async def handle_message(message: Message) -> None:
     if any(reg_match(OCHEVIDNO_REGEX)(x) for x in message_words[-2::]):
         await ochevidno_reply(message)
 
-    if 'кт' in message_words:
-        await kt_reply(message)
-
     if any([reg_match(ROSKOMNADZOR_REGEX)(x) for x in message_words]):
         await roskomnadzor_reply(message)
 
@@ -50,6 +47,9 @@ async def handle_message(message: Message) -> None:
     
     if any([reg_match(KAZAKHSTAN_REGEX)(x) for x in message_words]):
         await kazakhstan_reply(message)
+
+    if 'кт' in message_words:
+        await kt_reply(message)
 
 
 async def main() -> None:
