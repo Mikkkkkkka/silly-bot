@@ -22,7 +22,8 @@ async def handle_start(message: Message) -> None:
 
 @dp.message(Command('ping'))
 async def handle_ping(message: Message) -> None:
-    await message.reply('Да работаю я')
+    ping_photo = FSInputFile("resources/why_tag.png")
+    await message.answer_photo(ping_photo)
 
 
 @dp.message(Command('scp'))
