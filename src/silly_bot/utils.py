@@ -1,0 +1,86 @@
+import time
+import re
+from pathlib import Path
+from typing import Callable, Awaitable
+
+from aiogram import Dispatcher
+from aiogram.types import Message
+
+#
+# Константы
+#
+
+# Регулярки
+DA_REGEX = r"\W*д+а+\W*"
+NET_REGEX = r"\W*н+е+т+\W*"
+PHYSICS_REGEX = r"\W*ф+и+з+и+к+\w*\W*"
+KAZAKHSTAN_REGEX = r"\W*к+а+з+а+х+с+т+а+н+\w*\W*"
+ROSKOMNADZOR_REGEX = r"\W*р+о+с+к+о+м+н+а+д+з+о+р+\w*\W*"
+OCHEVIDNO_REGEX = r"\W*о+ч+е+в+и+д+н+о\W*"
+
+# Файлы
+PACKAGE_ROOT = Path(__file__).resolve().parent
+RESOURCES_DIR = PACKAGE_ROOT / "resources"
+
+#
+# Вспомогательные штуки
+#
+
+
+def reg_match(regex):
+    return lambda x: re.fullmatch(regex, x)
+
+
+def timestamp():
+    return f"{'{:02d}'.format(time.localtime().tm_mday)}/{'{:02d}'.format(time.localtime().tm_mon)}/{'{:04d}'.format(time.localtime().tm_year)} | {'{:02d}'.format(time.localtime().tm_hour)}:{'{:02d}'.format(time.localtime().tm_min)}:{'{:02d}'.format(time.localtime().tm_sec)}"
+
+
+def user_action_logger(
+    func: Callable[[Message], tuple[Message, str]],
+):
+    async def wrap(*args):
+
+        try:
+            message, log_from_func = func(*args)
+            user = message.from_user
+            if user is None:
+                print("user_action_logger expects user to be non None")
+                return
+
+            log_message = f"[ {timestamp()} ] @{user.username}: {log_from_func}"
+            print(log_message)
+            with open("./ebobot_log.txt", "a") as f:
+                f.write(log_message + "\n")
+
+        except Exception as e:
+            pass
+        return
+
+    return wrap
+
+
+def user_action_logger_async(
+    func: Callable[[Message], Awaitable[tuple[Message, str]]],
+):
+    async def wrap(*args):
+
+        try:
+            message, log_from_func = await func(*args)
+            user = message.from_user
+            if user is None:
+                print("user_action_logger expects user to be non None")
+                return
+
+            log_message = f"[ {timestamp()} ] @{user.username}: {log_from_func}"
+            print(log_message)
+            with open("./ebobot_log.txt", "a") as f:
+                f.write(log_message + "\n")
+
+        except Exception as e:
+            pass
+        return
+
+    return wrap
+
+
+dp = Dispatcher()

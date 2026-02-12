@@ -1,0 +1,19 @@
+[project]
+name = "silly-bot"
+version = "0.1.0"
+description = "A silly Telegram bot built with aiogram."
+authors = [
+    {name = "Mikhail Kashin",email = "144782206+Mikkkkkkka@users.noreply.github.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13,<3.15"
+dependencies = [
+    "aiogram (>=3.25.0,<4.0.0)"
+]
+
+[tool.poetry]
+packages = [{include = "silly_bot", from = "src"}]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
