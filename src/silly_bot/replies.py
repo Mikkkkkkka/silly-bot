@@ -2,7 +2,7 @@ import time
 
 from aiogram.types import Message
 
-from utils import user_action_logger_async
+from silly_bot.utils import user_action_logger_async
 
 #
 # Ответы

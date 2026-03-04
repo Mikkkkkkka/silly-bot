@@ -4,7 +4,7 @@ from aiogram import Bot
 from aiogram.types import Message, BotCommand
 from os import getenv
 
-from utils import (
+from silly_bot.utils import (
     dp,
     reg_match,
     timestamp,
@@ -15,8 +15,8 @@ from utils import (
     PHYSICS_REGEX,
     KAZAKHSTAN_REGEX,
 )
-from commands import *
-from replies import *
+from silly_bot.commands import *
+from silly_bot.replies import *
 
 
 #
