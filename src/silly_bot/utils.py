@@ -25,15 +25,6 @@ def expanded_word_regex(word: str) -> str:
     regex.append(r"\W*")
     return "".join(regex)
 
-def expanded_word_with_multiple_endings(word: str) -> str:
-    regex = [r"\W*"]
-    for char in word:
-        regex.append(f"{char}+")
-    regex.append(r"\w*")
-    regex.append(r"\W*")
-    return "".join(regex)
-
-
 
 def reg_match(regex: str) -> Callable[[str], re.Match[str]]:
     return lambda x: re.fullmatch(regex, x)
@@ -46,7 +37,6 @@ def matches_with_any(regexes: List[str]) -> Callable[[str], bool]:
                 return True
         return False
     return _inner
-
 
 
 def timestamp():
