@@ -65,3 +65,9 @@ async def ochevidno_reply(message: Message):
     time.sleep(0.75)
     await message.reply("Вы все пидоры, вот что очевидно")
     return message, "доочевидился"
+
+
+@user_action_logger_async
+async def forbidden_reply(message: Message):
+    await message.reply("*ЛГБТ - запрещённая в России экстремистская организация")
+    return message, "должен быть осторожнее"

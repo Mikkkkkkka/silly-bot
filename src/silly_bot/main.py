@@ -8,7 +8,7 @@ from silly_bot.utils import (
     dp,
     reg_match,
     timestamp,
-    expanded_word_regex,
+    expanded_word_regex, matches_with_any, expanded_word_with_multiple_endings,
 )
 from silly_bot.commands import *
 from silly_bot.replies import *
@@ -54,6 +54,17 @@ async def handle_message(message: Message) -> None:
 
     if any([reg_match(expanded_word_regex("казахстан"))(x) for x in message_words]):
         await kazakhstan_reply(message)
+
+    if any([matches_with_any([
+        expanded_word_with_multiple_endings("лесб"),
+        expanded_word_with_multiple_endings("ге"),
+        expanded_word_with_multiple_endings("бисекс"),
+        expanded_word_with_multiple_endings("транс"),
+        expanded_word_with_multiple_endings("гомос"),
+        expanded_word_regex("квир"),
+        expanded_word_regex("пидор"),
+    ])(x) for x in message_words]):
+        await forbidden_reply(message)
 
     if "кт" in message_words:
         await kt_reply(message)
