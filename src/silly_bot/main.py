@@ -61,8 +61,8 @@ async def handle_message(message: Message) -> None:
         expanded_word_with_multiple_endings("бисекс"),
         expanded_word_with_multiple_endings("транс"),
         expanded_word_with_multiple_endings("гомос"),
+        expanded_word_with_multiple_endings("пидор"),
         expanded_word_regex("квир"),
-        expanded_word_regex("пидор"),
         expanded_word_regex("лгбт"),
     ])(x) for x in message_words]):
         await forbidden_reply(message)
