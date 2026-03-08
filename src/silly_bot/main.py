@@ -8,12 +8,7 @@ from silly_bot.utils import (
     dp,
     reg_match,
     timestamp,
-    DA_REGEX,
-    NET_REGEX,
-    OCHEVIDNO_REGEX,
-    ROSKOMNADZOR_REGEX,
-    PHYSICS_REGEX,
-    KAZAKHSTAN_REGEX,
+    expanded_word_regex,
 )
 from silly_bot.commands import *
 from silly_bot.replies import *
@@ -42,22 +37,22 @@ async def handle_message(message: Message) -> None:
 
     message_words = message.text.lower().split()
 
-    if reg_match(DA_REGEX)(message_words[-1]):
+    if reg_match(expanded_word_regex("да"))(message_words[-1]):
         await da_reply(message)
 
-    if reg_match(NET_REGEX)(message_words[-1]):
+    if reg_match(expanded_word_regex("нет"))(message_words[-1]):
         await net_reply(message)
 
-    if any(reg_match(OCHEVIDNO_REGEX)(x) for x in message_words[-2::]):
+    if any(reg_match(expanded_word_regex("очевидно"))(x) for x in message_words[-2::]):
         await ochevidno_reply(message)
 
-    if any([reg_match(ROSKOMNADZOR_REGEX)(x) for x in message_words]):
+    if any([reg_match(expanded_word_regex("роскомнадзор"))(x) for x in message_words]):
         await roskomnadzor_reply(message)
 
-    if any([reg_match(PHYSICS_REGEX)(x) for x in message_words]):
+    if any([reg_match(expanded_word_regex("физика"))(x) for x in message_words]):
         await physics_reply(message)
 
-    if any([reg_match(KAZAKHSTAN_REGEX)(x) for x in message_words]):
+    if any([reg_match(expanded_word_regex("казахстан"))(x) for x in message_words]):
         await kazakhstan_reply(message)
 
     if "кт" in message_words:

@@ -5,7 +5,7 @@ from aiogram.filters import CommandStart, Command
 from aiogram.types import Message, FSInputFile
 from aiogram.utils.formatting import Text, Strikethrough, Bold
 
-from silly_bot.utils import dp, user_action_logger_async, RESOURCES_DIR, pingfreya
+from silly_bot.utils import dp, user_action_logger_async, RESOURCES_DIR
 
 #
 # Команды

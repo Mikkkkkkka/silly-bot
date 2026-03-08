@@ -10,14 +10,6 @@ from aiogram.types import Message
 # Константы
 #
 
-# Регулярки
-DA_REGEX = r"\W*д+а+\W*"
-NET_REGEX = r"\W*н+е+т+\W*"
-PHYSICS_REGEX = r"\W*ф+и+з+и+к+\w*\W*"
-KAZAKHSTAN_REGEX = r"\W*к+а+з+а+х+с+т+а+н+\w*\W*"
-ROSKOMNADZOR_REGEX = r"\W*р+о+с+к+о+м+н+а+д+з+о+р+\w*\W*"
-OCHEVIDNO_REGEX = r"\W*о+ч+е+в+и+д+н+о\W*"
-
 # Файлы
 PACKAGE_ROOT = Path(__file__).resolve().parent
 RESOURCES_DIR = PACKAGE_ROOT / "resources"
@@ -25,6 +17,13 @@ RESOURCES_DIR = PACKAGE_ROOT / "resources"
 #
 # Вспомогательные штуки
 #
+
+def expanded_word_regex(word: str) -> str:
+    regex = [r"\W*"]
+    for char in word:
+        regex.append(f"{char}+")
+    regex.append(r"\W*")
+    return "".join(regex)
 
 
 def reg_match(regex):
