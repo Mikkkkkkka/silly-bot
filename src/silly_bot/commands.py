@@ -16,7 +16,7 @@ from silly_bot.utils import dp, user_action_logger_async, RESOURCES_DIR, pingfre
 @user_action_logger_async
 async def handle_start(message: Message) -> tuple[Message, str]:
     formatted = Text(
-        "Привет! Я Ебобот\nРазраб - ", Strikethrough("даун"), " @mishakashaa"
+        "Привет! Я Ебобот\nРазраб - ", Strikethrough("даун"), " @k_amysh"
     )
     await message.reply(**formatted.as_kwargs())
     return message, "МОЖЕТ НАПИСАТЬ!"
