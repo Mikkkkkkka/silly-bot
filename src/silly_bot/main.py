@@ -58,6 +58,9 @@ async def handle_message(message: Message) -> None:
     if "кт" in message_words:
         await kt_reply(message)
 
+    if any("пенис" in word for word in message_words):
+        await penis_reply(message)
+
 
 async def main() -> None:
 

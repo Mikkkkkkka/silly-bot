@@ -8,6 +8,7 @@ from silly_bot.utils import user_action_logger_async
 # Ответы
 #
 
+PENIS_STICKER_ID='CAACAgIAAxkBAAMEaskQMqmM6dvCYHS5HNlANFlFnJIAAnICAAJRFhcMbwQYKRdglyM9BA'
 
 @user_action_logger_async
 async def da_reply(message: Message):
@@ -65,3 +66,9 @@ async def ochevidno_reply(message: Message):
     time.sleep(0.75)
     await message.reply("Вы все пидоры, вот что очевидно")
     return message, "доочевидился"
+
+@user_action_logger_async
+async def penis_reply(message: Message):
+    await message.reply_sticker(PENIS_STICKER_ID)
+    return message, "пениснулся!"
+
