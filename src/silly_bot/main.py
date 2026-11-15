@@ -86,5 +86,5 @@ if __name__ == "__main__":
         help="Do not write user action logs to ebobot_log.txt.",
     )
     args = parser.parse_args()
-    set_file_logging(not args.no_log)
+    set_file_logging(not args.no_text_log)
     asyncio.run(main())
