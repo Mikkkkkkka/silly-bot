@@ -1,5 +1,8 @@
 { pkgs ? import <nixpkgs> {} }:
 
+--
+-- OUTDATED!!!
+--
 pkgs.mkShell {
   name = "python-dev-shell";
   
