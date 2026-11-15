@@ -13,6 +13,12 @@ from aiogram.types import Message
 # Файлы
 PACKAGE_ROOT = Path(__file__).resolve().parent
 RESOURCES_DIR = PACKAGE_ROOT / "resources"
+write_logs_to_file = True
+
+
+def set_file_logging(enabled: bool) -> None:
+    global write_logs_to_file
+    write_logs_to_file = enabled
 
 #
 # Вспомогательные штуки
@@ -48,8 +54,9 @@ def user_action_logger(
 
             log_message = f"[ {timestamp()} ] @{user.username}: {log_from_func}"
             print(log_message)
-            with open("./ebobot_log.txt", "a") as f:
-                f.write(log_message + "\n")
+            if write_logs_to_file:
+                with open("./ebobot_log.txt", "a") as f:
+                    f.write(log_message + "\n")
 
         except Exception as e:
             pass
@@ -72,8 +79,9 @@ def user_action_logger_async(
 
             log_message = f"[ {timestamp()} ] @{user.username}: {log_from_func}"
             print(log_message)
-            with open("./ebobot_log.txt", "a") as f:
-                f.write(log_message + "\n")
+            if write_logs_to_file:
+                with open("./ebobot_log.txt", "a") as f:
+                    f.write(log_message + "\n")
 
         except Exception as e:
             pass
