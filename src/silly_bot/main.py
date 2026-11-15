@@ -1,4 +1,5 @@
 import asyncio
+import argparse
 
 from aiogram import Bot
 from aiogram.types import Message, BotCommand
@@ -9,6 +10,7 @@ from silly_bot.utils import (
     reg_match,
     timestamp,
     expanded_word_regex,
+    set_file_logging,
 )
 from silly_bot.commands import *
 from silly_bot.replies import *
@@ -77,4 +79,12 @@ async def main() -> None:
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Run the silly Telegram bot.")
+    parser.add_argument(
+        "--no-text-log",
+        action="store_true",
+        help="Do not write user action logs to ebobot_log.txt.",
+    )
+    args = parser.parse_args()
+    set_file_logging(not args.no_log)
     asyncio.run(main())
